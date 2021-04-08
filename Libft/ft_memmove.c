@@ -6,13 +6,15 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 12:22:40 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/07 13:00:25 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/04/08 17:41:29 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memmove(void *dst, const void *src, size_t len)
+#include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int				i;
+	size_t				i;
 	unsigned char	*p_dst;
 	unsigned char	*p_src;
 
