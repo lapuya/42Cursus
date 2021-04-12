@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 09:17:56 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/08 17:23:51 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/04/12 10:02:04 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,30 @@
 
 #include <stdlib.h>
 
-void	ft_bzero(void *s, int n);
-int	ft_strlen(char *str);
-void	*ft_memset(void *b, int c, size_t n);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);
-int		ft_isalpha(int c);
-char	*strchr(const char *s, int c)
-char	*strrchr(const char *s, int c)
+void			*ft_memset(void *b, int c, size_t n);
+void			ft_bzero(void *s, size_t len);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
+void			*ft_memmove(void *dst, const void *src, size_t len);
+void			*ft_memchr(const void *s, int c, size_t n);
+int				ft_memcmp(const void *s1, const void *s2, size_t n);
+int				ft_strlen(const char *str);
+unsigned int	ft_strlcpy(char *dest, const char *src, size_t dstsize);
+size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
+char			*ft_strchr(const char *s, int c);
+char			*ft_strrchr(const char *s, int c);
+char			*ft_strnstr(const char *haystack, const char *needle, size_t len);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_atoi(const char *str);
+int				ft_isalpha(int c);
+int				ft_isdigit(int c);
+int				ft_isalnum(int c);
+int				ft_isascii(int c);
+int				ft_isprint(int c);
+int				ft_toupper(int c);
+int				ft_tolower(int c);
+void			*ft_calloc(size_t count, size_t size);
+char			*ft_strdup(const char *s1);
 
 
 #endif

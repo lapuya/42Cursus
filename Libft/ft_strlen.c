@@ -6,11 +6,13 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 09:13:14 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/07 09:23:58 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/04/12 09:24:36 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+int	ft_strlen(const char *str)
 {
 	int	i;
 
