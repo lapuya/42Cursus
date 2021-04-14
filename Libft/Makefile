@@ -6,7 +6,7 @@
 #    By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/12 09:17:05 by lapuya-p          #+#    #+#              #
-#    Updated: 2021/04/12 09:29:41 by lapuya-p         ###   ########.fr        #
+#    Updated: 2021/04/14 14:13:56 by lapuya-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,23 @@ SRCS = ft_memset.c		\
 		ft_strnstr.c		\
 		ft_atoi.c		\
 		ft_calloc.c		\
+		ft_substr.c		\
 		ft_strdup.c		\
+		ft_strjoin.c	\
+		ft_strtrim.c	\
+		ft_split.c		\
+		ft_itoa.c		\
+		ft_strmapi.c	\
+		ft_putchar_fd.c		\
+		ft_putstr_fd.c	\
+		ft_putendl_fd.c		\
+		ft_putnbr_fd.c		\
+		ft_lstnew.c	\
+		ft_lstadd_front.c	\
+		ft_lstlast.c	\
+
+SRCSB =	ft_lstnew.c			\
+		$(SRCS)
 
 
 NAME = libft.a
@@ -64,3 +80,7 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+bonus: $(OBJECTS_BONUS_PREFIXED)
+	@ar r $(NAME) $(OBJECTS_BONUS_PREFIXED)
+	@echo "Libft Bonus Done !"
