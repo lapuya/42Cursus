@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/07 09:50:34 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/15 13:51:28 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/04/15 09:29:29 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/04/15 10:45:20 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t len)
+void	ft_lstiter(t_list *lst, void(*f)(void *))
 {
-	ft_memset(s, 0, len);
+	if (lst)
+	{
+		while (lst)
+		{
+			(*f)(lst->content);
+			lst = lst->next;
+		}
+	}
 }

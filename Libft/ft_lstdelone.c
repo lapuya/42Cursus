@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/07 09:50:34 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/15 13:51:28 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/04/15 08:52:05 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/04/18 10:00:57 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t len)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	ft_memset(s, 0, len);
+	del(lst->content);
+	free(lst);
 }

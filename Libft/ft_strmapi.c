@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 12:20:09 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/14 12:34:50 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/04/15 14:10:41 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*str;
-	int 	i;
+	int		i;
 
 	if (!s || !f)
 		return (NULL);

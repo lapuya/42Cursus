@@ -6,14 +6,13 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 10:21:03 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/14 12:20:03 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/04/16 09:01:01 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
 
-static int		ft_determine_size(long n)
+static int	ft_determine_size(long n)
 {
 	int		size;
 
@@ -36,12 +35,12 @@ static int		ft_determine_size(long n)
 	return (size);
 }
 
-static char		*ft_convert(long n, int size, char *str)
+static char	*ft_convert(long n, int size, char *str)
 {
 	int		sign;
 
 	sign = 1;
-	if(n < 0)
+	if (n < 0)
 	{
 		sign = -1;
 		n = -n;
@@ -57,8 +56,7 @@ static char		*ft_convert(long n, int size, char *str)
 		str[0] = '-';
 	else
 		str[0] = (n % 10) + '0';
-
-	return str;
+	return (str);
 }
 
 char	*ft_itoa(int n)
@@ -75,9 +73,3 @@ char	*ft_itoa(int n)
 	str = ft_convert(num, size, str);
 	return (str);
 }
-
-/*int		main()
-{
-	printf("%s", ft_itoa(0));
-	return (0);
-}*/

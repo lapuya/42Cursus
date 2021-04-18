@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 12:59:42 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/14 13:12:09 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/04/16 08:56:14 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char num;
-	
+	char	num;
+
 	if (n == -2147483648)
 		write(fd, "-2147483648", 11);
 	else
@@ -37,6 +37,5 @@ void	ft_putnbr_fd(int n, int fd)
 			num = (n % 10) + '0';
 			write(fd, &num, 1);
 		}
-
 	}
 }

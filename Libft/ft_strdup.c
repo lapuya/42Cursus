@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 07:58:01 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/13 09:05:23 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/04/16 08:38:30 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 
 char	*ft_strdup(const char *s1)
 {
-	char *ptr;
-	size_t len;
+	char	*ptr;
+	size_t	len;
 
-	len = ft_strlen((s1) + 1);
+	len = ft_strlen(s1) + 1;
 	ptr = malloc(sizeof(char) * len);
 	if (!ptr)
 		return (0);

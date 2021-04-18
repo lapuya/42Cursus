@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:06:19 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/04/12 09:19:01 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/04/16 08:58:52 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t					i;
-	unsigned const char	*p;
+	unsigned const char		*p;
 
 	i = 0;
 	p = s;
