@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 08:34:27 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/05/18 14:05:29 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/05/19 12:57:19 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_format
 	int zero;
 	int dot;
 	int asterisk;
+	int counter;
 
 }	t_format;
 

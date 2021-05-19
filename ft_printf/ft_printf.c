@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 08:30:30 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/05/18 14:05:20 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/05/19 12:57:24 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,21 @@ size_t	ft_strlen(const char *str)
 }
 
 
-void	ft_initialize_format(t_format f)
+void	ft_initialize_format(t_format *f)
 {
-	f.type = 0;
-	f.minus = 0;
-	f.zero = 0;
-	f.dot = 0;
-	f.asterisk = 0;
+	f->type = 0;
+	f->minus = 0;
+	f->zero = 0;
+	f->dot = 0;
+	f->asterisk = 0;
+	f->counter = 0;
 }
 
-void	ft_parse_format(t_format *style, const char *format)
+void	ft_parse_format(t_format *style, const char *format, int i)
 {
-	int i;
-
-	i = 0;
 	while (format[i] && format[i] != '%')
 	{
+	
 		if (format[i] == '-')
 			style->minus = 1;
 		else if (format[i] == '0')
@@ -63,12 +62,13 @@ void	ft_parse_format(t_format *style, const char *format)
 		else if (format[i] == '.')
 			style->dot = 1;
 		else if (format[i] == '*')
-			style->dot = 1;
+			style->asterisk = 1;
 		else if (format[i] == 'c' || format[i] == 's' ||
 				format[i] == 'p' || format[i] == 'd' ||
 				format[i] == 'i' || format[i] == 'u' ||
 				format[i] == 'x' || format[i] == 'X')
-			style->type = format[i];
+			style->type = *format;
+		style->counter++;
 		i++;
 	}
 }
@@ -83,17 +83,44 @@ int	ft_char_case(va_list params)
 }
 
 
-int	ft_determine_case_and_print(t_format style, va_list params)
+int	ft_determine_case_and_print(t_format *style, va_list params)
 {
 	int count;
 
 	count = 0;
-	if (style.type == 'c')
+	printf("Counter es: %d\n", style->counter);
+	while (style->counter > 0)
 	{
-		count += ft_char_case(params);
+		if (style->minus == 1)
+		{
+			printf("%s\n", "ejecutar comportamiento del flag '-'");
+			style->minus = 0;
+		}
+		else if (style->zero == 1)
+		{
+			printf("%s\n", "ejecutar comportamiento del flag zero");
+			style->zero = 0;
+		}
+		else if (style->dot == 1)
+		{
+			printf("%s\n", "ejecutar flag '.'");
+			style->dot = 0;
+		} 
+		else if (style->asterisk == 1)
+		{
+			printf("%s\n", "ejecutar flag '*'");
+			style->asterisk = 0;
+		}
+		else {
+			printf("%s\n", "ejecutar type");
+			style->type = 0;
+		}
+		style->counter--;
 	}
 	return (count);
 }
+
+
 int	ft_print_and_count(const char *format, va_list params)
 {
 	int			i;
@@ -101,19 +128,24 @@ int	ft_print_and_count(const char *format, va_list params)
 	t_format	style;
 
 	count = 0;
-	ft_initialize_format(style);
-	while(*format)
+	i = 0;
+	while (format[i])
 	{
-		if (*format == '%')
+		if (format[i] == '%')
 		{
-			format++;
-			ft_parse_format(&style, format);
-			count += ft_determine_case_and_print(style, params);
+			i++;
+			ft_initialize_format(&style);
+			ft_parse_format(&style, format, i);
 		}
-		format++;
+		count += ft_determine_case_and_print(&style, params);
+		while (format[i] != '%')
+		{
+			i++;
+			if (format[i] == '\0')
+				break ;
+		}
 	}
 	return (count);
-
 }
 
 
