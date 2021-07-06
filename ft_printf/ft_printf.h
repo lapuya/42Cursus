@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 08:34:27 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/05/21 13:06:00 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/07/06 12:43:06 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct s_flags
 {
 	int minus;
 	int zero;
-	int dot;
-	int asterisk;
+	int precision;
+	int width;
 	int counter;
 } t_flags;
 
@@ -37,7 +37,9 @@ int	ft_printf(const char *format, ...);
 void	ft_setflag(t_flags *f, char c);
 void	ft_initialize_format(t_format *f);
 void	ft_initialize_flags(t_flags *f);
-void	ft_parse_format(t_format *style, const char *format, int i);
-int		ft_processflags(t_flags *flag);
+int	ft_parse_format(t_format *style, char *format);
+int		ft_processflags(t_flags *flag, const char *format, int *count);
+int	ft_isdigit(int c);
+void ft_putchar(char c);
 
 #endif

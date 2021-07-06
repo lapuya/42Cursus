@@ -6,32 +6,37 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 09:56:37 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/05/21 13:05:49 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/07/06 12:43:04 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_parse_format(t_format *style, const char *format, int i)
+int	ft_parse_format(t_format *style, char *format)
 {
-	while (format[i] && format[i] != '%')
+	int i;
+	
+	i = 0;
+	while (*format && *format != '%')
 	{
 
-		if (format[i] == '-' || format[i] == '0' || format[i] == '.'||
-				format[i] == '*')
+		if (*format == '-' || *format == '0' || *format == '.'||
+				*format == '*')
 		{
-			ft_setflag(&style->flags, format[i]);
+			ft_setflag(&style->flags, *format);
 			style->has_flags = 1;
 		}
-		else if (format[i] == 'c' || format[i] == 's' ||
-				format[i] == 'p' || format[i] == 'd' ||
-				format[i] == 'i' || format[i] == 'u' ||
-				format[i] == 'x' || format[i] == 'X')
+		else if (*format == 'c' || *format == 's' ||
+				*format == 'p' || *format == 'd' ||
+				*format == 'i' || *format == 'u' ||
+				*format == 'x' || *format == 'X')
 		{
-			style->type = format[i];
+			style->type = *format;
 		}
+		format++;
 		i++;
 	}
+	return (i);
 }
 
 void	ft_setflag(t_flags *f, char c)
@@ -40,10 +45,8 @@ void	ft_setflag(t_flags *f, char c)
 		f->minus = 1;
 	else if (c == '0')
 		f->zero = 1;
-	else if (c == '.')
-		f->dot = 1;
-	else if (c == '*')
-		f->asterisk = 1;
+	else if (c == '.' || c == '*')
+		f->precision = 1;
 	f->counter++;
 }
 
@@ -58,12 +61,12 @@ void	ft_initialize_flags(t_flags *f)
 {
 	f->minus = 0;
 	f->zero = 0;
-	f->dot = 0;
-	f->asterisk = 0;
+	f->precision = 0;
+	f->width = 0;
 	f->counter = 0;
 }
 
-int	ft_processflags(t_flags *flag)
+int	ft_processflags(t_flags *flag, const char *format, int *count)
 {
 	if (flag->minus == 1)
 	{
@@ -77,20 +80,32 @@ int	ft_processflags(t_flags *flag)
 		flag->zero = 0;
 		flag->counter--;
 	}
-	else if (flag->dot == 1)
+	else if (flag->precision == 1)
 	{
-		printf("%s\n", "ejecutar flag '.'");
-		flag->dot = 0;
+		if (*format == '.')
+		{
+			format++;
+			while (ft_isdigit(*format))
+			{
+				flag->width = (flag->width * 10) + (*format - '0');
+				format++;
+			}
+		}
+		else if (*format == '*')
+		{
+
+		}
 		flag->counter--;
 	} 
-	else if (flag->asterisk == 1)
-	{
-		printf("%s\n", "ejecutar flag '*'");
-		flag->asterisk = 0;
-		flag->counter--;
-	}
 
 	return (flag->counter);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
 

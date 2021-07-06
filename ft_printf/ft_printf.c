@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 08:30:30 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/05/21 13:05:57 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/07/06 12:43:02 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,52 +39,72 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-void	ft_print_type(int c, va_list params)
+void	ft_print_type(int c, t_flags *flag, va_list params)
 {
 	char caracter;
+	char *string;
+	int y;
 
-	caracter = va_arg(params, int);
 	if (c == 'c')
+	{
+		caracter = va_arg(params, int);
 		ft_putchar(caracter);
+	}
+	else if (c == 's')
+	{
+		string = va_arg(params, char*);
+		if (flag->precision == 1)
+		{
+			y = 0;
+			while (flag->width-- > 0)
+				ft_putchar(string[y++]);
+			flag->precision = 0;
+		}
+		else
+			ft_putstr(string);
+	}
+
 }
 
-int	ft_determine_case_and_print(t_format *style, va_list params)
+int	ft_determine_case_and_print(t_format *style, va_list params, const char *format)
 {
 	int count;
 	int has_flags;
 
 	count = 0;
 	while (style->has_flags == 1)
-		style->has_flags = ft_processflags(&style->flags);
-	ft_print_type(style->type, params);
+		style->has_flags = ft_processflags(&style->flags, format, &count);
+	ft_print_type(style->type, &style->flags, params);
 	return (count);
 }
 
 
 int	ft_print_and_count(const char *format, va_list params)
 {
-	int			i;
 	int			count;
+	int			move;
 	char		c;
 	t_format	style;
 
 	count = 0;
-	i = 0;
-	while (format[i])
+	while (*format)
 	{
-		if (format[i] == '%')
+		move = 0;
+		if (*format == '%')
 		{
-			i++;
+			format++;
 			ft_initialize_format(&style);
-			ft_parse_format(&style, format, i);
-			count += ft_determine_case_and_print(&style, params);
+			move = ft_parse_format(&style, (char *)format);
+			count += ft_determine_case_and_print(&style, params, format);
+			while (move-- > 1)
+				format++;
 		}
 		else
 		{
-			ft_putchar(format[i]);
+			ft_putchar(*format);
 			count++;
 		}
-		i++;
+		format++;
 	}
 	return (count);
 }
