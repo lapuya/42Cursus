@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/07 12:19:36 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/07 12:47:39 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/04/15 08:41:54 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/04/16 09:00:09 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	main()
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	printf("%c", 'h');
-	return (0);
+	t_list	*aux;
+
+	if (*lst)
+	{
+		aux = ft_lstlast(*lst);
+		aux->next = new;
+	}
+	else
+		*lst = new;
 }

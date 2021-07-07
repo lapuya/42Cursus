@@ -5,126 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 08:30:30 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/06 12:43:02 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/07/07 10:17:28 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/07/07 14:00:35 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putchar(char c)
+void	ft_parse_format(t_format *format, const char * str)
 {
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	while (*str != '\0')
+	while (*str && !ft_is_flag(*str) && !ft_is_type(*str))
 	{
-		write(1, str, 1);
-		str++;
-	}
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (*str != '\0')
-	{
-		str++;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_print_type(int c, t_flags *flag, va_list params)
-{
-	char caracter;
-	char *string;
-	int y;
-
-	if (c == 'c')
-	{
-		caracter = va_arg(params, int);
-		ft_putchar(caracter);
-	}
-	else if (c == 's')
-	{
-		string = va_arg(params, char*);
-		if (flag->precision == 1)
+		if (ft_is_flag(*str))
 		{
-			y = 0;
-			while (flag->width-- > 0)
-				ft_putchar(string[y++]);
-			flag->precision = 0;
+			ft_set_flag(&format->flags, *str);
+			format->has_flags = 1;
 		}
-		else
-			ft_putstr(string);
+		else if (ft_isdigit(*str))
+			ft_flag_digit(&format->flags, *str);
+		else if (ft_is_type(*str))
+			format->type = *str;
+		str++;
 	}
-
 }
 
-int	ft_determine_case_and_print(t_format *style, va_list params, const char *format)
+int		ft_print_case(t_format format, va_list params)
 {
 	int count;
-	int has_flags;
 
-	count = 0;
-	while (style->has_flags == 1)
-		style->has_flags = ft_processflags(&style->flags, format, &count);
-	ft_print_type(style->type, &style->flags, params);
+	count  = 0;
+	if (format.type == 'c')
+		count += ft_char_case(params, format.flags);
 	return (count);
 }
 
 
-int	ft_print_and_count(const char *format, va_list params)
+
+int ft_print_and_count(const char *str, va_list params)
 {
+	t_format	format;
 	int			count;
-	int			move;
-	char		c;
-	t_format	style;
 
 	count = 0;
-	while (*format)
+	while (*str)
 	{
-		move = 0;
-		if (*format == '%')
+		if (*str == '%')
 		{
-			format++;
-			ft_initialize_format(&style);
-			move = ft_parse_format(&style, (char *)format);
-			count += ft_determine_case_and_print(&style, params, format);
-			while (move-- > 1)
-				format++;
+			str++;
+			ft_initialize_format(&format);
+			ft_parse_format(&format, str);
+			count += ft_print_case(format, params);
 		}
 		else
 		{
-			ft_putchar(*format);
+			ft_putchar(*str);
 			count++;
 		}
-		format++;
+		str++;
 	}
 	return (count);
 }
 
-
-int	ft_printf(const char *format, ...)
+int ft_printf(const char *format, ...)
 {
 	int count;
 	va_list v_list;
-	char *str;
-	int num;
 
-	
 	va_start(v_list, format);
 	count = ft_print_and_count(format, v_list);
-/*	str = va_arg(v_list, char *);
-	printf("%s\n%s\n", format, str);
-	num = va_arg(v_list, int);
-	printf("%d\n", num);*/
 	va_end(v_list);
 	return (count);
 }
+
+
+
 

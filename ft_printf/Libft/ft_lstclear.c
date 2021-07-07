@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/07 12:19:36 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/07 12:47:39 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/04/15 09:03:20 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/04/16 14:07:49 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	main()
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	printf("%c", 'h');
-	return (0);
+	t_list	*aux;
+	t_list	*tmp;
+
+
+
+	aux = *lst;
+	if (aux)
+	{
+		while (aux)
+		{
+			tmp = aux->next;
+			ft_lstdelone(aux, del);
+			aux = tmp;
+		}
+	}
+	*lst = NULL;
 }

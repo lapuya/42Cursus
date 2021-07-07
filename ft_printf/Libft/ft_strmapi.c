@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/07 12:19:36 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/07 12:47:39 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/04/14 12:20:09 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/04/15 14:10:41 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	main()
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	printf("%c", 'h');
-	return (0);
+	char	*str;
+	int		i;
+
+	if (!s || !f)
+		return (NULL);
+	str = ft_strdup(s);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

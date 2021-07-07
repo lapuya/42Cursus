@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/07 12:19:36 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/07 12:47:39 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/04/07 09:58:22 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/04/12 07:57:46 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	main()
+void	*ft_memset(void *b, int c, size_t len)
 {
-	printf("%c", 'h');
-	return (0);
+	unsigned char	*p;
+
+	p = b;
+	while (len > 0)
+	{
+		*p = (unsigned char) c;
+		p++;
+		len--;
+	}
+	return (b);
 }

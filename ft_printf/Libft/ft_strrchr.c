@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/07 12:19:36 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/07 12:47:39 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/04/08 17:24:01 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/04/18 09:15:07 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+/*
+**  The strrchr() function is identical to strchr(), 
+** except it locates the last occurrence of c.
+*/
 
-int	main()
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	printf("%c", 'h');
-	return (0);
+	int	size;
+
+	size = ft_strlen(s);
+	while (size >= 0)
+	{
+		if (s[size] == (char)c)
+			return ((char *)(s + size));
+		size--;
+	}
+	return (NULL);
 }

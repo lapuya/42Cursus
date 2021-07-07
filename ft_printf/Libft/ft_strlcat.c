@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flags.c                                         :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/07 11:18:24 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/07 13:44:37 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/04/16 08:34:24 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/04/18 09:41:08 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void ft_set_flag(t_flags *f, char c)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	if (c == '-')
+	size_t	i;
+	size_t	j;
+	size_t	dstlen;
+	size_t	srclen;
+
+	dstlen = ft_strlen(dst);
+	srclen = ft_strlen(src);
+	if (dstsize < dstlen)
+		return (dstsize + srclen);
+	i = ft_strlen(dst);
+	j = 0;
+	while (src[j] != '\0' && i < (dstsize - 1) && dstsize >= 2)
 	{
-		f->minus = 1;
-		f->zero = 0;
+		dst[i] = src[j];
+		i++;
+		j++;
 	}
-	else if (c == '0' && f->minus == 0 && f->width == 0)
-		f->zero = 1;
-	else if (c == '.')
-		f->dot = 1;
-	else if (c == '*')
-		f->asterisk = 1;
-}
-
-void	ft_flag_digit(t_flags *f, char c)
-{
-	if (f->asterisk == 1)
-		f->width = 0;
-	f->width = (f->width * 10) + (c - '0');
-
+	dst[i] = '\0';
+	return (dstlen + srclen);
 }

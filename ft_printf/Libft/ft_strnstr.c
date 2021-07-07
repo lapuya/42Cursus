@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/07 12:19:36 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/07 12:47:39 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/04/15 14:01:35 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/04/15 14:08:11 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	main()
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	printf("%c", 'h');
-	return (0);
+	size_t	i;
+	size_t	j;
+	char	*aux;
+
+	aux = (char *)haystack;
+	if (*needle == '\0')
+		return (aux);
+	i = 0;
+	while (aux[i] != '\0' && i < len)
+	{
+		j = 0;
+		while (needle[j] == aux[i + j] && aux[i + j] != '\0' && (i + j) < len)
+		{
+			if (needle[j + 1] == '\0')
+				return (aux + i);
+			j++;
+		}
+		i++;
+	}
+	return (NULL);
 }
