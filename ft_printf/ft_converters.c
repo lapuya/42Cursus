@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 20:08:50 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 11:28:53 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/15 12:06:28 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_convert(long n, int size, char *str)
 	return (str);
 }
 
-int	ft_itoa(int n)
+int	ft_itoa_2(int n)
 {
 	char	*str;
 	int		size;

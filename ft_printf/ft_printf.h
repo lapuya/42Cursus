@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:14:22 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 11:23:09 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/15 12:06:30 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ int	ft_pointer_case(va_list params);
 int	ft_decimal_integer_case(va_list params);
 int	ft_udecimal_case(va_list params);
 int ft_hexadecimal_case(va_list params);
+int	ft_upper_hex_case(va_list params);
 int	ft_percentage_case(void);
 int	ft_long_to_hex(unsigned long nbr);
+int	ft_long_to_uphex(unsigned long nbr);
 int	ft_determine_size(long n);
 int	ft_determine_usize(unsigned int n);
 
 //temporal de libft
 void	ft_putchar(int c);
-int	ft_itoa(int n);
+int	ft_itoa_2(int n);
 int	ft_uitoa(unsigned int n);
 
 #endif

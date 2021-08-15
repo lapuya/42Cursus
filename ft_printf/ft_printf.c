@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:06:52 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 11:28:47 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/15 12:06:33 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	ft_count_and_print(char c, va_list params)
 		count += ft_udecimal_case(params);
 	else if (c == 'x')
 		count += ft_hexadecimal_case(params);
+	else if (c == 'X')
+		count += ft_upper_hex_case(params);
 	else
 		count += ft_percentage_case();
 	return (count);

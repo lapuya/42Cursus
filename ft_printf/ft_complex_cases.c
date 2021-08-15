@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 11:16:43 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 11:20:02 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/15 12:06:27 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_decimal_integer_case(va_list params)
 	int	nbr;
 
 	nbr = va_arg(params, int);
-	count = ft_itoa(nbr);
+	count = ft_itoa_2(nbr);
 	return (count);
 }
 
@@ -53,5 +53,16 @@ int	ft_hexadecimal_case(va_list params)
 	count = 0;
 	nbr = va_arg(params, unsigned long);
 	count += ft_long_to_hex(nbr);
+	return (count);
+}
+
+int ft_upper_hex_case(va_list params)
+{
+	int				count;
+	unsigned long	nbr;
+
+	count = 0;
+	nbr = va_arg(params, unsigned long);
+	count += ft_long_to_uphex(nbr);
 	return (count);
 }
