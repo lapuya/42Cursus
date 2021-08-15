@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 11:20:28 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 12:06:32 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/15 12:21:53 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,30 @@ int	ft_determine_usize(unsigned int n)
 	return (size);
 }
 
-int	ft_long_to_uphex(unsigned long nbr)
+int	ft_to_uphex(unsigned int nbr)
 {
 	char	*base;
 	int		count;
 
 	count = 1;
-	base = "0123456789ABCDEF;
+	base = "0123456789ABCDEF";
+	if (nbr >= 16)
+	{
+		count += ft_long_to_hex(nbr / 16);
+		ft_putchar(*(base + (nbr % 16)));
+	}
+	else
+		ft_putchar(*(base + nbr));
+	return (count);
+}
+
+int	ft_tohex(unsigned int nbr)
+{
+	char	*base;
+	int		count;
+
+	count = 1;
+	base = "0123456789abcdef";
 	if (nbr >= 16)
 	{
 		count += ft_long_to_hex(nbr / 16);

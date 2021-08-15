@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 11:16:43 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 12:06:27 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/15 12:20:37 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,21 @@ int	ft_udecimal_case(va_list params)
 int	ft_hexadecimal_case(va_list params)
 {
 	int				count;
-	unsigned long	nbr;
+	unsigned int	nbr;
 
 	count = 0;
-	nbr = va_arg(params, unsigned long);
-	count += ft_long_to_hex(nbr);
+	nbr = va_arg(params, unsigned int);
+	count += ft_tohex(nbr);
 	return (count);
 }
 
 int ft_upper_hex_case(va_list params)
 {
 	int				count;
-	unsigned long	nbr;
+	unsigned int	nbr;
 
 	count = 0;
-	nbr = va_arg(params, unsigned long);
-	count += ft_long_to_uphex(nbr);
+	nbr = va_arg(params, unsigned int);
+	count += ft_to_uphex(nbr);
 	return (count);
 }
