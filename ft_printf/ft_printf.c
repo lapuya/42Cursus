@@ -5,78 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/07 10:17:28 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/07 14:00:35 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/08/14 17:06:52 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/08/15 11:28:47 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_parse_format(t_format *format, const char * str)
+void	ft_putchar(int c)
 {
-	while (*str && !ft_is_flag(*str) && !ft_is_type(*str))
-	{
-		if (ft_is_flag(*str))
-		{
-			ft_set_flag(&format->flags, *str);
-			format->has_flags = 1;
-		}
-		else if (ft_isdigit(*str))
-			ft_flag_digit(&format->flags, *str);
-		else if (ft_is_type(*str))
-			format->type = *str;
-		str++;
-	}
+	write(1, &c, 1);
 }
 
-int		ft_print_case(t_format format, va_list params)
+int	ft_count_and_print(char c, va_list params)
 {
-	int count;
+	int	count;
 
-	count  = 0;
-	if (format.type == 'c')
-		count += ft_char_case(params, format.flags);
+	count = 0;
+	if (c == 'c')
+		count += ft_char_case(params);
+	else if (c == 's')
+		count += ft_string_case(params);
+	else if (c == 'p')
+		count += ft_pointer_case(params);
+	else if (c == 'd' || c == 'i')
+		count += ft_decimal_integer_case(params);
+	else if (c == 'u')
+		count += ft_udecimal_case(params);
+	else if (c == 'x')
+		count += ft_hexadecimal_case(params);
+	else
+		count += ft_percentage_case();
 	return (count);
 }
 
-
-
-int ft_print_and_count(const char *str, va_list params)
+int	ft_print_and_count(const char *str, va_list params)
 {
-	t_format	format;
-	int			count;
+	int	count;
+	int	i;
 
+	i = 0;
 	count = 0;
-	while (*str)
+	while (str[i] != '\0')
 	{
-		if (*str == '%')
+		if (str[i] == '%')
 		{
-			str++;
-			ft_initialize_format(&format);
-			ft_parse_format(&format, str);
-			count += ft_print_case(format, params);
+			i++;
+			count += ft_count_and_print(str[i], params);
 		}
 		else
 		{
-			ft_putchar(*str);
+			write(1, &str[i], 1);
 			count++;
 		}
-		str++;
+		i++;
 	}
 	return (count);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	int count;
-	va_list v_list;
+	int		count;
+	va_list	v_list;
 
 	va_start(v_list, format);
 	count = ft_print_and_count(format, v_list);
 	va_end(v_list);
 	return (count);
 }
-
-
-
-

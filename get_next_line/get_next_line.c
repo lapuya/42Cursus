@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 09:02:40 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/05/13 09:48:48 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/05/18 13:43:24 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,27 @@ char	*ft_save_and_point(char *save, char **line)
 	char			*tmp;
 
 	i = 0;
+
 	while (save[i] != '\n' && save[i] != '\0')
 		i++;
+	printf("%d\n", i);
 	if (save[i] == '\n')
 	{
+		printf("%s\n","primer if");
 		limit = ft_strlen(save);
+		printf("%zu\n", limit);
 		*line = ft_substr(save, 0, i);
+		printf("%s\n",*line);
+		printf("------------");
 		tmp = ft_substr(save, i + 1, limit);
+		printf("%s\n",tmp);
 		free(save);
 		save = ft_strdup(tmp);
 		free(tmp);
 	}
 	else
 	{
+		printf("seguundo");
 		*line = save;
 		save = NULL;
 	}

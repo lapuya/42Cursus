@@ -5,40 +5,45 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/07 12:42:32 by lapuya-p          #+#    #+#              #
-#    Updated: 2021/07/07 14:07:38 by lapuya-p         ###   ########.fr        #
+#    Created: 2021/08/14 17:47:08 by lapuya-p          #+#    #+#              #
+#    Updated: 2021/08/15 11:24:36 by lapuya-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT = ./libft/libft.a
 NAME = libftprintf.a
 
-SRCS =  ft_printf.c \
-		ft_cases.c \
-		ft_flags.c \
-		ft_initializers.c \
-		ft_validators.c \
-		main.c
+SRCS = ft_printf.c \
+	   ft_basic_cases.c \
+	   ft_complex_cases.c \
+	   ft_auxiliaries.c \
+	   ft_converters.c \
+	   main.c
+
 CC = gcc
 
-FLAGS = -c -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
-	$(MAKE) bonus -C ./libft
+	$(MAKE) -C ./libft
 	cp libft/libft.a $(NAME)
-	$(CC) $(FLAGS) $(SRCS)
+	$(CC) -o output $(FLAGS) $(SRCS)
 	ar -rcs $(NAME) $(OBJS)
 
-all : $(NAME)
+all: $(NAME)
 
-clean :
+
+main:
+	$(CC) $(FLAGS) $(SRCS)
+
+clean:
 	$(MAKE) clean -C ./libft
 	rm -rf $(OBJS)
 
-fclean : clean
+fclean: clean
 	$(MAKE) fclean -C ./libft
 	rm -rf $(NAME)
 
-re : fclean all
+re: fclean all

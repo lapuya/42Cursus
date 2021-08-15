@@ -5,42 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/07 10:14:37 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/07/07 14:07:42 by lapuya-p         ###   ########.fr       */
+/*   Created: 2021/08/14 17:14:22 by lapuya-p          #+#    #+#             */
+/*   Updated: 2021/08/15 11:23:09 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "Libft/libft.h"
-#include <stdio.h>
+//#include "Libft/libft.h"
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct s_flags
-{
-	int minus;
-	int zero;
-	int dot;
-	int asterisk;
-	int precision;
-	int width;
-} t_flags;
+int	ft_printf(const char *format, ...);
+int	ft_char_case(va_list params);
+int	ft_string_case(va_list params);
+int	ft_pointer_case(va_list params);
+int	ft_decimal_integer_case(va_list params);
+int	ft_udecimal_case(va_list params);
+int ft_hexadecimal_case(va_list params);
+int	ft_percentage_case(void);
+int	ft_long_to_hex(unsigned long nbr);
+int	ft_determine_size(long n);
+int	ft_determine_usize(unsigned int n);
 
-typedef struct s_format
-{
-	t_flags flags;
-	int has_flags;
-	int type;
-} t_format;
-
-void	ft_initialize_format(t_format *f);
-void	ft_initialize_flags(t_flags *f);
-int		ft_is_flag(char c);
-int		ft_is_type(char c);
-void	ft_set_flag(t_flags *f, char c);
-int	ft_char_case(va_list params, t_flags f);
-void	ft_flag_digit(t_flags *f, char c);
+//temporal de libft
+void	ft_putchar(int c);
+int	ft_itoa(int n);
+int	ft_uitoa(unsigned int n);
 
 #endif
