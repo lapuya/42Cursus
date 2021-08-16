@@ -6,11 +6,11 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 11:20:28 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 12:27:12 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/16 16:57:29 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	ft_determine_size(long n)
 {

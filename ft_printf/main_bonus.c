@@ -6,24 +6,33 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:53:52 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 13:43:54 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/16 19:26:49 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	main(void)
 {
-	int	a;
-	int	*b;
-	int	count_ft;
-	int	count_print;
+	int	count;
+	int	count_printf;
 
-	a = 10;
-	b = &a;
-	printf("%.6u", 12);
+	count = 0;
+	count_printf = 0;
+	printf("------------------ chars con flag '-' -----------------\n");
+	count = ft_printf(" %-3s %-3s %-4s %-5s %-3s ", " - ", "", "4", "", "2 ");
+	printf("\n");
+	count_printf= printf(" %-3s %-3s %-4s %-5s %-3s ", " - ", "", "4", "", "2 ");
+
+	printf("\nLa cuenta de ft es: %d\n", count);
+	printf("La cuenta de printf es: %d\n", count_printf);
+
+
 	/*
+	 * print(" %-3s %-4s ", " - ", ""));
+	 * print(" %-2s %-3s %-4s %-5s ", " - ", "", "4", "")
+	 * rint(" %-3s %-3s %-4s %-5s %-3s ", " - ", "", "4", "", "2 ")
 	count_ft = 0;
 	count_print = 0;
 	printf("------------- CHAR CASE -----------------\n");

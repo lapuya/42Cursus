@@ -6,26 +6,26 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:06:52 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 12:20:39 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/16 18:53:36 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 void	ft_putchar(int c)
 {
 	write(1, &c, 1);
 }
 
-int	ft_count_and_print(char c, va_list params)
+int	ft_count_and_print(char c, va_list params, t_format *flags)
 {
 	int	count;
 
 	count = 0;
 	if (c == 'c')
-		count += ft_char_case(params);
+		count += ft_char_case(params, flags);
 	else if (c == 's')
-		count += ft_string_case(params);
+		count += ft_string_case(params, flags);
 	else if (c == 'p')
 		count += ft_pointer_case(params);
 	else if (c == 'd' || c == 'i')
@@ -41,7 +41,7 @@ int	ft_count_and_print(char c, va_list params)
 	return (count);
 }
 
-int	ft_print_and_count(const char *str, va_list params)
+int	ft_print_and_count(const char *str, va_list params, t_format *flags)
 {
 	int	count;
 	int	i;
@@ -52,8 +52,8 @@ int	ft_print_and_count(const char *str, va_list params)
 	{
 		if (str[i] == '%')
 		{
-			i++;
-			count += ft_count_and_print(str[i], params);
+			i = ft_process_flags(str, i, flags);
+			count += ft_count_and_print(str[i], params, flags);
 		}
 		else
 		{
@@ -69,9 +69,11 @@ int	ft_printf(const char *format, ...)
 {
 	int		count;
 	va_list	v_list;
+	t_format	flags;
 
 	va_start(v_list, format);
-	count = ft_print_and_count(format, v_list);
+	ft_initialize_flags(&flags);
+	count = ft_print_and_count(format, v_list, &flags);
 	va_end(v_list);
 	return (count);
 }

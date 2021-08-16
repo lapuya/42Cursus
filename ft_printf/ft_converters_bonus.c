@@ -6,11 +6,11 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 20:08:50 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 12:06:28 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/16 16:58:11 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	ft_long_to_hex(unsigned long nbr)
 {
