@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flags.c                                         :+:      :+:    :+:   */
+/*   ft_flags_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 16:06:23 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/16 19:21:25 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/22 23:24:09 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@ void	ft_initialize_flags(t_format *f)
 {
 	f->minus = 0;
 	f->zeros = 0;
+	f->dot = 0;
 	f->precision = 0;
 	f->width = 0;
+	f->sharp = 0;
+	f->space = 0;
+	f->plus = 0;
 }
 
 int	ft_isflag(char c)
@@ -40,9 +44,15 @@ int	ft_process_flags(const char *str, int i, t_format *f)
 		else if (str[pos] == '0' && f->zeros == 0)
 			f->zeros = 1;
 		else if (ft_isdigit(str[pos]))
+		{
 			f->width = ft_atoi(&str[pos]);
+			while (ft_isdigit(str[pos]))
+				pos++;
+			pos--;
+		}
 		else if (str[pos] == '.')
 		{
+			f->dot = 1;
 			pos++;
 			if (ft_isdigit(str[pos]))
 			{
@@ -57,6 +67,12 @@ int	ft_process_flags(const char *str, int i, t_format *f)
 				pos--;
 			}
 		}
+		else if (str[pos] == '#')
+			f->sharp = 1;
+		else if (str[pos] == ' ')
+			f->space = 1;
+		else if (str[pos] == '+')
+			f->plus = 1;
 		pos++;
 	}
 	return (pos);

@@ -6,7 +6,7 @@
 #    By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/14 17:47:08 by lapuya-p          #+#    #+#              #
-#    Updated: 2021/08/16 18:35:00 by lapuya-p         ###   ########.fr        #
+#    Updated: 2021/08/22 23:42:27 by ren              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,11 +39,13 @@ OBJS_B = $(SRCS_B:.c=.o)
 $(NAME): $(OBJS)
 	$(MAKE) -C ./libft
 	cp libft/libft.a $(NAME)
-	$(CC) -o output $(FLAGS) $(SRCS)
+	$(CC) $(FLAGS) $(SRCS)
 	ar -rcs $(NAME) $(OBJS)
 
 bonus: $(OBJS_B)
-	$(CC) -o output_bonus $(FLAGS) $(SRCS_B)
+	$(MAKE) -C ./libft
+	cp libft/libft.a $(NAME)
+	$(CC) $(FLAGS) $(SRCS_B)
 	ar -rcs $(NAME) $(OBJS_B)
 
 

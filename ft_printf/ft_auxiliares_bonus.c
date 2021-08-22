@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 16:41:20 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/16 19:23:41 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/21 12:57:58 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,34 @@ size_t	ft_strlen(const char *str)
 	{
 		str++;
 		i++;
+	}
+	return (i);
+}
+
+int	ft_ptrlen(size_t nbr)
+{
+	int	i;
+
+	i = 0;
+	while (nbr >= 16)
+	{
+		nbr /= 16;
+		i++;
+	}
+	return (i + 1);
+}
+
+int	ft_nbrlen(long nbr)
+{
+	int	i;
+
+	i = 0;
+	if (nbr == 0)
+		return (1);
+	while (nbr)
+	{
+		i++;
+		nbr /= 10;
 	}
 	return (i);
 }

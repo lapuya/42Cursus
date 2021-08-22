@@ -6,12 +6,13 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:53:52 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 11:28:50 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/22 19:14:37 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
+#include <limits.h>
 
 int	main(void)
 {
@@ -58,9 +59,9 @@ int	main(void)
 	printf("---------- DECIMAL-INTEGER CASE ----------\n");
 	count_ft = 0;
 	count_print = 0;
-	count_ft = ft_printf("%d", -123);
+	count_ft = ft_printf("%d", LONG_MIN);
 	printf("\n");
-	count_print = printf("%d", -123);
+	count_print = printf("%ld", LONG_MIN);
 	printf("\nLa cuenta de ft es: %d\n", count_ft);
 	printf("La cuenta de printf es: %d\n", count_print);
 	count_ft = 0;
@@ -83,9 +84,9 @@ int	main(void)
 	printf("---------- HEXADECIMAL CASE -------------\n");
 	count_ft = 0;
 	count_print = 0;
-	count_ft = ft_printf("%x", 321321);
+	count_ft = ft_printf("%x", -1);
 	printf("\n");
-	count_print = printf("%x", 321321);
+	count_print = printf("%x", -1);
 	printf("\nLa cuenta de ft es: %d\n", count_ft);
 	printf("La cuenta de printf es: %d\n", count_print);
 	sleep(2);
@@ -100,6 +101,8 @@ int	main(void)
 
 	printf("--------------LEAKS----------------------\n");
 	sleep(2);
+	int *str = (int*)malloc(sizeof(int));
+	str[0] = 'h';
 	system("leaks output");
 	return (0);
 }

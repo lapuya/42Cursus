@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cases.c                                         :+:      :+:    :+:   */
+/*   ft_basic_cases_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:35:14 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/16 19:24:52 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/19 18:07:01 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_string_case(va_list params, t_format *flags)
 	count = 0;
 	len = 0;
 	str = va_arg(params, char *);
-	if (flags->precision < 0 || flags->precision < (int)ft_strlen(str))
+	if (flags->precision < 0 || flags->precision > (int)ft_strlen(str) || flags->dot == 0)
 		flags->precision = (int)ft_strlen(str);
 	if (flags->minus == 0)
 	{
@@ -68,7 +68,6 @@ int	ft_string_case(va_list params, t_format *flags)
 	count += ft_putstr(str, flags->precision);
 	if (flags->minus == 1)
 		count += ft_putformat(' ', flags->width - flags->precision);
-	
 	return (count);
 }
 

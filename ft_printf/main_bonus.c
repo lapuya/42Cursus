@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:53:52 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/16 19:26:49 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/22 21:36:52 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(void)
 {
 	int	count;
 	int	count_printf;
+	int *a = NULL;
 
 	count = 0;
 	count_printf = 0;
@@ -27,6 +28,48 @@ int	main(void)
 
 	printf("\nLa cuenta de ft es: %d\n", count);
 	printf("La cuenta de printf es: %d\n", count_printf);
+	printf("---------------- pointers '-'---------------------- \n");
+	count = ft_printf(" %-4p ", a);
+	printf("\n");
+	count_printf = printf(" %-4p ", a);
+	printf("\nLa cuenta de ft es: %d\n", count);
+	printf("La cuenta de printf es: %d\n", count_printf);
+//	[200~TEST(26, print(" %-9p %-10p ", LONG_MIN, LONG_MAX))
+	printf("--------------- d with '-' -----------------------\n");
+	count = ft_printf(" %-9d %-10d %-11d %-12d %-13d %-14d %-15d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf("\n");
+	count_printf = printf(" %-2u ", -1);
+	printf("\nLa cuenta de ft es: %d\n", count);
+	printf("La cuenta de printf es: %d\n", count_printf);
+	printf("-------------- x with '-' --------------------------\n");
+	count = ft_printf(" %-1x ", 0);
+	printf("\n");
+	count_printf = printf(" %-1x ", 0);
+	printf("\nla cuenta de ft es: %d\n", count);
+	printf("La cuenta de printf es: %d\n", count_printf);
+	printf("---------------\n");
+	count = ft_printf(" %-12x ", LONG_MIN);
+	printf("\n");
+	count_printf = printf(" %-2x ", 123321321);
+	printf("\nla cuenta de ft es: %d\n", count);
+	printf("La cuenta de printf es: %d\n", count_printf);
+
+	printf("-------------- d with '0' ------------------------\n");
+	count = ft_printf(" %04d ", 9);
+	printf("\n");
+	count_printf = printf(" %04d ", 9);
+	printf("\nla cuenta de ft es: %d\n", count);
+	printf("La cuenta de printf es: %d\n", count_printf);
+	printf("---------------\n");
+	printf(" %#x ", -1);
+
+	printf("\n------- pruebas -----\n");
+	unsigned long x = -1;
+	printf("%ld\n", x);
+
+	ft_printf(" %04d ", -14);
+	printf("\n");
+
 
 
 	/*

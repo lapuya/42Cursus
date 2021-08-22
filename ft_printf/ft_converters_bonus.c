@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_converters.c                                    :+:      :+:    :+:   */
+/*   ft_converters_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 20:08:50 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/16 16:58:11 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/22 21:49:09 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	ft_long_to_hex(unsigned long nbr)
+int	ft_long_to_hex(size_t nbr)
 {
 	char	*base;
 	int		count;
@@ -31,13 +31,14 @@ int	ft_long_to_hex(unsigned long nbr)
 
 char	*ft_convert(long n, int size, char *str)
 {
-	int		sign;
+	int	sign;
 
 	sign = 1;
 	if (n < 0)
 	{
-		sign = -1;
+		size--;
 		n = -n;
+		sign = -1;
 	}
 	str[size--] = '\0';
 	while (size > 0)
@@ -46,24 +47,18 @@ char	*ft_convert(long n, int size, char *str)
 		n /= 10;
 		size--;
 	}
-	if (sign == -1)
-		str[0] = '-';
-	else
-		str[0] = (n % 10) + '0';
-	return (str);
-}
+	str[0] = (n % 10) + '0';
+	return (str);}
 
-int	ft_itoa_2(int n)
+int	ft_itoa_2(long n)
 {
 	char	*str;
-	int		size;
-	long	num;
 	int		i;
+	int 	size;
 
-	num = n;
-	size = ft_determine_size(num);
+	size = ft_determine_size(n);
 	str = malloc(sizeof(char) * (size + 1));
-	str = ft_convert(num, size, str);
+	str = ft_convert(n, size, str);
 	i = 0;
 	while (str[i])
 	{
