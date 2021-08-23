@@ -6,14 +6,14 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:14:22 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 12:51:46 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/23 10:05:45 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-//#include "Libft/libft.h"
+#include "Libft/libft.h"
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -35,8 +35,6 @@ int	ft_determine_size(long n);
 int	ft_determine_usize(unsigned int n);
 
 //temporal de libft
-void	ft_putchar(int c);
-int	ft_itoa_2(int n);
 int	ft_uitoa(unsigned int n);
 
 #endif

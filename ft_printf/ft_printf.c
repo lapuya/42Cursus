@@ -6,16 +6,11 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:06:52 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/15 13:11:59 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/23 09:26:52 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_putchar(int c)
-{
-	write(1, &c, 1);
-}
 
 int	ft_count_and_print(char c, va_list params)
 {

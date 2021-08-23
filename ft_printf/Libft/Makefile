@@ -8,6 +8,8 @@ HEADER = libft.h
 SRC_M = ft_bzero.c		\
 	ft_calloc.c		\
 	ft_itoa.c		\
+	ft_itoa_read.c	\
+	ft_uitoa.c	\
 	ft_memccpy.c	\
 	ft_memchr.c		\
 	ft_memcmp.c		\
@@ -33,6 +35,7 @@ SRC_M = ft_bzero.c		\
 	ft_substr.c		\
 	ft_tolower.c	\
 	ft_toupper.c	\
+	ft_putchar.c	\
 	ft_putchar_fd.c	\
 	ft_putendl_fd.c	\
 	ft_putnbr_fd.c	\
