@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 11:16:43 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 11:11:21 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 14:33:05 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_pointer_case(va_list params, t_format *flags)
 {
-	size_t				p;
-	int				count;
-	int				ptr_size;
+	size_t	p;
+	int		count;
+	int		ptr_size;
 
 	count = 0;
 	p = va_arg(params, size_t);
@@ -42,15 +42,9 @@ int	ft_decimal_integer_case(va_list params, t_format *flags)
 	count = 0;
 	nbr = va_arg(params, int);
 	if (nbr < 0)
-	{
-		write (1, "-", 1);
-		flags->width--;
-		count++;
-	}
+		ft_putminus(flags, &count);
 	nbr_size = ft_nbrlen(nbr);
 	count += nbr_size;
-	//if (flags->precision == 0 && nbr == 0)
-	//	return (ft_putformat('0', flags->width));
 	if ((flags->precision < 0) || (flags->minus == 0 && flags->zeros == 1))
 		flags->precision = flags->width;
 	if (nbr_size > flags->precision)
@@ -59,17 +53,9 @@ int	ft_decimal_integer_case(va_list params, t_format *flags)
 		count += ft_putformat(' ', flags->width - flags->precision);
 	count += ft_putformat('0', flags->precision - nbr_size);
 	if (flags->space == 1 && nbr >= 0)
-	{
-		write(1, " ", 1);
-		flags->width--;
-		count++;
-	}
+		ft_putspace(flags, &count);
 	if (flags->plus == 1 && nbr >= 0)
-	{
-		write (1, "+", 1);
-		flags->width--;
-		count++;
-	}
+		ft_putplus(flags, &count);
 	ft_itoa_read_2(nbr);
 	if (flags->minus == 1)
 		count += ft_putformat(' ', flags->width - flags->precision);
@@ -78,9 +64,9 @@ int	ft_decimal_integer_case(va_list params, t_format *flags)
 
 int	ft_udecimal_case(va_list params, t_format *flags)
 {
-	int		count;
-	int		nbr_size;
-	unsigned int		nbr;
+	unsigned int	nbr;
+	int				nbr_size;
+	int				count;
 
 	count = 0;
 	nbr = va_arg(params, int);
@@ -91,8 +77,6 @@ int	ft_udecimal_case(va_list params, t_format *flags)
 	}
 	nbr_size = ft_nbrlen(nbr);
 	count += nbr_size;
-	//if (flags->precision == 0 && nbr == 0)
-	//	return (ft_putformat('0', flags->width));
 	if ((flags->precision < 0) || (flags->minus == 0 && flags->zeros == 1))
 		flags->precision = flags->width;
 	if (nbr_size > flags->precision)
@@ -110,13 +94,11 @@ int	ft_hexadecimal_case(char c, va_list params, t_format *flags)
 {
 	int				count;
 	unsigned int	nbr;
-	int	size;
+	int				size;
 
 	count = 0;
 	nbr = va_arg(params, unsigned int);
 	size = ft_ptrlen(nbr);
-	//if (flags->precision == 0 && nbr == 0)
-	//	return (ft_putformat('0', flags->width));
 	if ((flags->precision < 0) || (flags->minus == 0 && flags->zeros == 1))
 		flags->precision = flags->width;
 	if (size > flags->precision)
@@ -134,7 +116,7 @@ int	ft_hexadecimal_case(char c, va_list params, t_format *flags)
 		count += 2;
 	}	
 	if (c == 'x')
-		count+= ft_tohex(nbr);
+		count += ft_tohex(nbr);
 	else
 		count += ft_to_uphex(nbr);
 	if (flags->minus == 1)

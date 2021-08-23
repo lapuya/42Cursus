@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:35:14 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/19 18:07:01 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 12:40:06 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	ft_string_case(va_list params, t_format *flags)
 	count = 0;
 	len = 0;
 	str = va_arg(params, char *);
-	if (flags->precision < 0 || flags->precision > (int)ft_strlen(str) || flags->dot == 0)
+	if (flags->precision < 0 || flags->precision > (int)ft_strlen(str)
+		|| flags->dot == 0)
 		flags->precision = (int)ft_strlen(str);
 	if (flags->minus == 0)
 	{

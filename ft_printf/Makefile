@@ -6,7 +6,7 @@
 #    By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/14 17:47:08 by lapuya-p          #+#    #+#              #
-#    Updated: 2021/08/23 11:56:33 by ren              ###   ########.fr        #
+#    Updated: 2021/08/23 14:04:02 by ren              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS_B = ft_printf_bonus.c \
 		 ft_complex_cases_bonus.c \
 		 ft_converters_bonus.c \
 		 ft_flags_bonus.c \
+		 ft_putsigns_bonus.c	\
 		 main_bonus.c
 
 CC = gcc
@@ -50,16 +51,14 @@ lib:
 	$(MAKE) -C ./libft
 	cp Libft/libft.a $(NAME)
 
-
-main:
-	$(CC) $(FLAGS) $(SRCS)
-
-clean:
+clean: 
 	$(MAKE) clean -C ./libft
-	rm -rf $(OBJS)
+	rm -rf $(OBJS) $(OBJS_B)
 
 fclean: clean
-	$(MAKE) fclean -C ./libft
+	rm -rf $(LIBFT)
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY:	all clean fclean bonus re lib

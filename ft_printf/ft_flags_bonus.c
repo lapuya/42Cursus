@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 16:06:23 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/22 23:24:09 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 12:52:38 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,41 @@ void	ft_initialize_flags(t_format *f)
 
 int	ft_isflag(char c)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'u' ||
-			c == 'd' || c == 'i' || c == 'x' || c == 'X' || c == '%')
+	if (c == 'c' || c == 's' || c == 'p' || c == 'u'
+		|| c == 'd' || c == 'i' || c == 'x' || c == 'X' || c == '%')
 		return (0);
 	return (1);
+}
+
+int	ft_treat_dot(const char *str, t_format *f, int i)
+{
+	int	pos;
+
+	f->dot = 1;
+	pos = i + 1;
+	if (ft_isdigit(str[pos]))
+	{
+		f->precision = ft_atoi(&str[pos]);
+		while (ft_isdigit(str[pos]))
+			pos++;
+		pos--;
+	}
+	else
+	{
+		f->precision = 0;
+		pos--;
+	}
+	return (pos);
+}
+
+void	ft_treat_marks(t_format *f, char c)
+{
+	if (c == '#')
+		f->sharp = 1;
+	else if (c == ' ')
+		f->space = 1;
+	else if (c == '+')
+		f->plus = 1;
 }
 
 int	ft_process_flags(const char *str, int i, t_format *f)
@@ -51,28 +82,10 @@ int	ft_process_flags(const char *str, int i, t_format *f)
 			pos--;
 		}
 		else if (str[pos] == '.')
-		{
-			f->dot = 1;
-			pos++;
-			if (ft_isdigit(str[pos]))
-			{
-				f->precision = ft_atoi(&str[pos]);
-				while (ft_isdigit(str[pos]))
-					pos++;
-				pos--;
-			}
-			else
-			{
-				f->precision = 0;
-				pos--;
-			}
-		}
-		else if (str[pos] == '#')
-			f->sharp = 1;
-		else if (str[pos] == ' ')
-			f->space = 1;
-		else if (str[pos] == '+')
-			f->plus = 1;
+			pos = ft_treat_dot(str, f, pos);
+		else if (str[pos] == '#' || str[pos] == ' '
+			|| str[pos] == '+')
+			ft_treat_marks(f, str[pos]);
 		pos++;
 	}
 	return (pos);

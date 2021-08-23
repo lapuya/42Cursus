@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:06:52 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 11:17:06 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 12:54:34 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	ft_count_and_print(char c, va_list params, t_format *flags)
 
 int	ft_print_and_count(const char *str, va_list params)
 {
-	int	count;
-	int	i;
+	int			count;
+	int			i;
 	t_format	flags;
 
 	i = 0;
