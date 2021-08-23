@@ -6,7 +6,7 @@
 /*   By: lapuya-p <lapuya-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 13:51:50 by ren               #+#    #+#             */
-/*   Updated: 2021/08/23 14:24:56 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 16:34:21 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,14 @@ void	ft_putspace(t_format *f, int *count)
 	write (1, " ", 1);
 	f->width--;
 	*count = *count + 1;
+}
+
+void	ft_put_hexsign(t_format *f, char c, int *count)
+{
+	if (c == 'x')
+		write(1, "0x", 2);
+	else if (c == 'X')
+		write(1, "0X", 2);
+	f->width--;
+	*count = *count + 2;
 }

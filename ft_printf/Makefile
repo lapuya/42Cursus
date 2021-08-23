@@ -6,7 +6,7 @@
 #    By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/14 17:47:08 by lapuya-p          #+#    #+#              #
-#    Updated: 2021/08/23 14:04:02 by ren              ###   ########.fr        #
+#    Updated: 2021/08/23 17:07:34 by lapuya-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,15 @@ NAME = libftprintf.a
 SRCS = ft_printf.c \
 	   ft_basic_cases.c \
 	   ft_complex_cases.c \
-	   ft_converters.c \
+	   ft_converters.c 
 
 SRCS_B = ft_printf_bonus.c \
 		 ft_basic_cases_bonus.c \
 		 ft_complex_cases_bonus.c \
 		 ft_converters_bonus.c \
 		 ft_flags_bonus.c \
-		 ft_putsigns_bonus.c	\
-		 main_bonus.c
+		 ft_putsigns_bonus.c	
+
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror

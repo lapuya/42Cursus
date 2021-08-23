@@ -6,7 +6,7 @@
 /*   By: lapuya-p <lapuya-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 11:12:23 by ren               #+#    #+#             */
-/*   Updated: 2021/08/23 11:16:42 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 16:22:45 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ char	*ft_convert(long n, int size, char *str)
 		size--;
 	}
 	str[0] = (n % 10) + '0';
-	return (str);}
+	return (str);
+}
 
 int	ft_itoa_read_2(long n)
 {
 	char	*str;
 	int		i;
-	int 	size;
+	int		size;
 
 	size = ft_determine_size(n);
 	str = malloc(sizeof(char) * (size + 1));

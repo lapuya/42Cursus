@@ -6,12 +6,14 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:35:14 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 12:40:06 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 16:54:45 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
+/* Puts the format, where c is -> ' ', '0' and the diff is the result of
+ * substracting width - precision */
 int	ft_putformat(char c, int diff)
 {
 	int	count;
@@ -27,6 +29,9 @@ int	ft_putformat(char c, int diff)
 	return (count);
 }
 
+/* Prints the char. If there is no left justification and flag zero is 1,
+ * we fill with 0's. If not, with spaces. If there is left justification,
+ * we print ' ' */
 int	ft_char_case(va_list params, t_format *flags)
 {
 	char	c;
@@ -47,6 +52,10 @@ int	ft_char_case(va_list params, t_format *flags)
 	return (count);
 }
 
+/* Prints the string. If there's no precision provided or the precision
+ * is larger than the length of the string or there is no dot flag, 
+ * the precision is 0. Then we will with '0' or spaces and  if left just.
+ * we fill with ' ' */
 int	ft_string_case(va_list params, t_format *flags)
 {
 	int		count;
@@ -72,6 +81,7 @@ int	ft_string_case(va_list params, t_format *flags)
 	return (count);
 }
 
+/* Prints the special char percentage */
 int	ft_percentage_case(void)
 {
 	write(1, "%", 1);

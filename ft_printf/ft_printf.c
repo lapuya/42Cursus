@@ -6,12 +6,14 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:06:52 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 09:26:52 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 16:49:35 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/* This funcion will check which conversion is needed and then it will call
+ * the respective function to print and count */
 int	ft_count_and_print(char c, va_list params)
 {
 	int	count;
@@ -36,6 +38,8 @@ int	ft_count_and_print(char c, va_list params)
 	return (count);
 }
 
+/* This funcion will  go through the arguments passed and it will call
+ * a function that will decide which conversion is needed */
 int	ft_print_and_count(const char *str, va_list params)
 {
 	int	count;
@@ -60,6 +64,7 @@ int	ft_print_and_count(const char *str, va_list params)
 	return (count);
 }
 
+/* The main function of ft_printf */
 int	ft_printf(const char *format, ...)
 {
 	int		count;

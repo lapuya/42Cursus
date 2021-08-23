@@ -6,12 +6,13 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 16:06:23 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 12:52:38 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 17:03:18 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
+/* Initialize the struct format */
 void	ft_initialize_flags(t_format *f)
 {
 	f->minus = 0;
@@ -24,6 +25,7 @@ void	ft_initialize_flags(t_format *f)
 	f->plus = 0;
 }
 
+/* Checks the conversions */
 int	ft_isflag(char c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'u'
@@ -32,6 +34,7 @@ int	ft_isflag(char c)
 	return (1);
 }
 
+/* Puts the precision if '.' is found */
 int	ft_treat_dot(const char *str, t_format *f, int i)
 {
 	int	pos;
@@ -53,6 +56,7 @@ int	ft_treat_dot(const char *str, t_format *f, int i)
 	return (pos);
 }
 
+/* Triggers the marks flags */
 void	ft_treat_marks(t_format *f, char c)
 {
 	if (c == '#')
@@ -63,6 +67,7 @@ void	ft_treat_marks(t_format *f, char c)
 		f->plus = 1;
 }
 
+/* Process the flags and triggers the struct values */
 int	ft_process_flags(const char *str, int i, t_format *f)
 {
 	int	pos;

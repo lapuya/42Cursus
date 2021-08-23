@@ -6,12 +6,15 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 11:16:43 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 11:26:53 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 16:46:06 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/* Prints the pointer. It will print the first '0x' then it will 
+ * convert the number to hexadecimal. It returns count + 2, 
+ * where 2 is the count of printing '0x' */
 int	ft_pointer_case(va_list params)
 {
 	unsigned long	p;
@@ -24,6 +27,7 @@ int	ft_pointer_case(va_list params)
 	return (count + 2);
 }
 
+/* Calls the itoa function and reads */
 int	ft_decimal_integer_case(va_list params)
 {
 	int	count;
@@ -34,6 +38,7 @@ int	ft_decimal_integer_case(va_list params)
 	return (count);
 }
 
+/* Calls the itoa function which is slighty changed to treat an unsigned */
 int	ft_udecimal_case(va_list params)
 {
 	int				count;
@@ -45,6 +50,7 @@ int	ft_udecimal_case(va_list params)
 	return (count);
 }
 
+/* Converts the number to lowercase hexadecimal */
 int	ft_hexadecimal_case(va_list params)
 {
 	int				count;
@@ -56,6 +62,7 @@ int	ft_hexadecimal_case(va_list params)
 	return (count);
 }
 
+/* Converts the number to Uppercase Hexadecimal */
 int	ft_upper_hex_case(va_list params)
 {
 	int				count;
