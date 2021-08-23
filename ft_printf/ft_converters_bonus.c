@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 20:08:50 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/22 21:49:09 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 11:39:56 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,76 +29,36 @@ int	ft_long_to_hex(size_t nbr)
 	return (count);
 }
 
-char	*ft_convert(long n, int size, char *str)
+int	ft_to_uphex(unsigned int nbr)
 {
-	int	sign;
+	char	*base;
+	int		count;
 
-	sign = 1;
-	if (n < 0)
+	count = 1;
+	base = "0123456789ABCDEF";
+	if (nbr >= 16)
 	{
-		size--;
-		n = -n;
-		sign = -1;
+		count += ft_to_uphex(nbr / 16);
+		ft_putchar(*(base + (nbr % 16)));
 	}
-	str[size--] = '\0';
-	while (size > 0)
-	{
-		str[size] = (n % 10) + '0';
-		n /= 10;
-		size--;
-	}
-	str[0] = (n % 10) + '0';
-	return (str);}
-
-int	ft_itoa_2(long n)
-{
-	char	*str;
-	int		i;
-	int 	size;
-
-	size = ft_determine_size(n);
-	str = malloc(sizeof(char) * (size + 1));
-	str = ft_convert(n, size, str);
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	free(str);
-	return (size);
+	else
+		ft_putchar(*(base + nbr));
+	return (count);
 }
 
-char	*ft_uconvert(unsigned int n, int size, char *str)
+int	ft_tohex(unsigned int nbr)
 {
-	str[size--] = '\0';
-	while (size > 0)
-	{
-		str[size] = (n % 10) + '0';
-		n /= 10;
-		size--;
-	}
-	str[0] = (n % 10) + '0';
-	return (str);
-}
+	char	*base;
+	int		count;
 
-int	ft_uitoa(unsigned int n)
-{
-	char			*str;
-	int				size;
-	unsigned int	num;
-	int				i;
-
-	num = n;
-	size = ft_determine_usize(num);
-	str = malloc(sizeof(char) * (size + 1));
-	str = ft_uconvert(num, size, str);
-	i = 0;
-	while (str[i])
+	count = 1;
+	base = "0123456789abcdef";
+	if (nbr >= 16)
 	{
-		write(1, &str[i], 1);
-		i++;
+		count += ft_tohex(nbr / 16);
+		ft_putchar(*(base + (nbr % 16)));
 	}
-	free(str);
-	return (size);
+	else
+		ft_putchar(*(base + nbr));
+	return (count);
 }

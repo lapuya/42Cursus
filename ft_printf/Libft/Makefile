@@ -7,13 +7,17 @@ HEADER = libft.h
 
 SRC_M = ft_bzero.c		\
 	ft_calloc.c		\
+	ft_atoi.c	\
 	ft_itoa.c		\
 	ft_itoa_read.c	\
+	ft_itoa_read_2.c	\
 	ft_uitoa.c	\
 	ft_memccpy.c	\
 	ft_memchr.c		\
 	ft_memcmp.c		\
 	ft_memcpy.c		\
+	ft_nbrlen.c	\
+	ft_isdigit.c	\
 	ft_isalnum.c	\
 	ft_isalpha.c	\
 	ft_isascii.c	\
@@ -39,7 +43,9 @@ SRC_M = ft_bzero.c		\
 	ft_putchar_fd.c	\
 	ft_putendl_fd.c	\
 	ft_putnbr_fd.c	\
-	ft_putstr_fd.c	
+	ft_putstr.c	\
+	ft_putstr_fd.c	\
+	ft_ptrlen.c
 
 SRC_B = ft_lstadd_back.c\
 	ft_lstadd_front.c	\

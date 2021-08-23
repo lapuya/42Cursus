@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 09:17:56 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 10:20:59 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 11:58:02 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,10 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 void			ft_putchar(char c);
 int	ft_itoa_read(int n);
 int	ft_uitoa(unsigned int n);
+int	ft_itoa_read_2(long n);
+int	ft_putstr(char *s, int len);
+int	ft_ptrlen(size_t nbr);
+int	ft_nbrlen(long nbr);
+
 
 #endif

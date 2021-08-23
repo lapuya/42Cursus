@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/15 11:16:43 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/22 23:24:33 by ren              ###   ########.fr       */
+/*   Updated: 2021/08/23 11:11:21 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_decimal_integer_case(va_list params, t_format *flags)
 		flags->width--;
 		count++;
 	}
-	ft_itoa_2(nbr);
+	ft_itoa_read_2(nbr);
 	if (flags->minus == 1)
 		count += ft_putformat(' ', flags->width - flags->precision);
 	return (count);

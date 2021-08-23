@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_auxiliares_bonus.c                              :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lapuya-p <lapuya-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 16:41:20 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/21 12:57:58 by ren              ###   ########.fr       */
+/*   Created: 2021/08/23 11:47:22 by ren               #+#    #+#             */
+/*   Updated: 2021/08/23 11:47:38 by ren              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
+#include "libft.h"
 
 int	ft_isspace(char c)
 {
@@ -54,59 +47,4 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (nbr * sign);
-}
-
-int	ft_putstr(char *s, int len)
-{
-	/*int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-	return (i);*/
-	return (write(1, s, len));
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (*str != '\0')
-	{
-		str++;
-		i++;
-	}
-	return (i);
-}
-
-int	ft_ptrlen(size_t nbr)
-{
-	int	i;
-
-	i = 0;
-	while (nbr >= 16)
-	{
-		nbr /= 16;
-		i++;
-	}
-	return (i + 1);
-}
-
-int	ft_nbrlen(long nbr)
-{
-	int	i;
-
-	i = 0;
-	if (nbr == 0)
-		return (1);
-	while (nbr)
-	{
-		i++;
-		nbr /= 10;
-	}
-	return (i);
 }
