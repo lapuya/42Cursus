@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:14:22 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 16:31:07 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/26 18:09:14 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_decimal_integer_case(va_list params, t_format *flags);
 int		ft_udecimal_case(va_list params, t_format *flags);
 int		ft_hexadecimal_case(char c, va_list params, t_format *flags);
 int		ft_upper_hex_case(va_list params);
-int		ft_percentage_case(void);
+int		ft_percentage_case(t_format *flags);
 int		ft_long_to_hex(size_t nbr);
 int		ft_tohex(unsigned int nbr);
 int		ft_to_uphex(unsigned int nbr);

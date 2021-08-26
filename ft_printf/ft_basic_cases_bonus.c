@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:35:14 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 16:54:45 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/26 18:10:07 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	ft_string_case(va_list params, t_format *flags)
 	count = 0;
 	len = 0;
 	str = va_arg(params, char *);
+	if (str == NULL)
+		str = "(null)";
 	if (flags->precision < 0 || flags->precision > (int)ft_strlen(str)
 		|| flags->dot == 0)
 		flags->precision = (int)ft_strlen(str);
@@ -82,8 +84,20 @@ int	ft_string_case(va_list params, t_format *flags)
 }
 
 /* Prints the special char percentage */
-int	ft_percentage_case(void)
+int	ft_percentage_case(t_format *flags)
 {
-	write(1, "%", 1);
-	return (1);
+	int		count;
+
+	count = 1;
+	if (flags->minus == 0)
+	{
+		if (flags->zeros == 1)
+			count += ft_putformat('0', flags->width - 1);
+		else
+			count += ft_putformat(' ', flags->width - 1);
+	}
+	write (1, "%", 1);
+	if (flags->minus == 1)
+		count += ft_putformat(' ', flags->width - 1);
+	return (count);
 }

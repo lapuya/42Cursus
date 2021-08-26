@@ -6,7 +6,7 @@
 /*   By: lapuya-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/14 17:35:14 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/08/23 16:40:59 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/08/26 18:00:21 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_string_case(va_list params)
 
 	count = 0;
 	str = va_arg(params, char *);
+	if (str == NULL)
+		str = "(null)";
 	while (str[count])
 	{
 		ft_putchar(str[count]);
