@@ -6,7 +6,7 @@
 /*   By: lapuya-p <lapuya-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 11:46:18 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/09/01 15:40:51 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/09/01 20:54:53 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,76 @@ int	ft_get_width(const char *file)
 	return (width);
 }
 
+void	ft_load_matrix(int *matrix_nums, char *line)
+{
+	char	**nbrs;
+	int	i;
+
+	nbrs = ft_split(line, ' ');
+	matrix_nums[0] = 1;
+	i = 0;
+	while (nbrs[i])
+	{
+		matrix_nums[i] = ft_atoi(nbrs[i]);
+		free(nbrs[i]);
+		i++;
+	}
+	free(nbrs);
+	printf("\n");
+}
 
 void	ft_load_map(const char *file, t_map *map)
 {
+	int	i;
+	int	fd;
+	char	*line;
+
 	map->height = ft_getheight(file);
-	printf("%s\n", file);
-	printf("%d\n", map->height);
 	map->width = ft_get_width(file);
-	printf("%d\n", map->width);
+	map->matrix = (int **)malloc(sizeof(int*) * (map->height + 1));
+	i = 0;
+	while(i <= map->height)
+	{
+		map->matrix[i] = (int*)malloc(sizeof(int) * (map->width + 1));
+		i++;
+	}
+	fd = open(file, O_RDONLY);
+	i = 0;
+	while (get_next_line(fd, &line))
+	{
+		ft_load_matrix(map->matrix[i], line);
+		free(line);
+		i++;
+	}
+	free(line);
+	close(fd);
+}
+
+void	ft_show_map(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while(i < map->height)
+	{
+		j = 0;
+		while(j < map->width)
+		{
+			printf("%3d", map->matrix[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+
 }
 
 void	ft_load_fdf(const char *file, t_fdf *fdf)
 {
 	fdf->map = (t_map *)malloc(sizeof(t_map));
 	ft_load_map(file, fdf->map);
-	free(fdf->map);
+	ft_show_map(fdf->map);
 }
+
+

@@ -6,7 +6,7 @@
 #    By: lapuya-p <lapuya-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/01 12:21:10 by lapuya-p          #+#    #+#              #
-#    Updated: 2021/09/01 14:19:48 by lapuya-p         ###   ########.fr        #
+#    Updated: 2021/09/01 16:04:08 by lapuya-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ AR = ar rcs
 
 OBJS = $(SRCS:.c=.o)
 
-all:	
+all:	$(NAME)
+
+$(NAME):
 	$(MAKE) -C ./Libft
 	$(CC) $(SRC) -o $(NAME) $(FLAGS) $(SRCS) $(LIBFT)
 
