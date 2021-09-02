@@ -6,7 +6,7 @@
 /*   By: lapuya-p <lapuya-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 11:46:18 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/09/01 20:54:53 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/09/02 14:32:55 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,31 +89,14 @@ void	ft_load_map(const char *file, t_map *map)
 	close(fd);
 }
 
-void	ft_show_map(t_map *map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while(i < map->height)
-	{
-		j = 0;
-		while(j < map->width)
-		{
-			printf("%3d", map->matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-
-}
-
 void	ft_load_fdf(const char *file, t_fdf *fdf)
 {
 	fdf->map = (t_map *)malloc(sizeof(t_map));
 	ft_load_map(file, fdf->map);
-	ft_show_map(fdf->map);
+	fdf->map->zoom = 20;
+	fdf->map->color = 0;
+	fdf->mlx_pointer = mlx_init();
+	fdf->window = mlx_new_window(fdf->mlx_pointer, 1000, 1000, "FdF");
 }
 
 
