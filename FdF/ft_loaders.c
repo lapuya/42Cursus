@@ -6,7 +6,7 @@
 /*   By: lapuya-p <lapuya-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 11:46:18 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/09/06 14:18:32 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/09/06 15:16:21 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ft_load_fdf(const char *file, t_fdf *fdf)
 {
 	fdf->map = (t_map *)malloc(sizeof(t_map));
 	ft_load_map(file, fdf->map);
-	fdf->map->zoom = 20;
+	fdf->map->zoom = 50;
 	fdf->map->color = 0;
 	fdf->mlx_pointer = mlx_init();
 	fdf->window = mlx_new_window(fdf->mlx_pointer, 1000, 1000, "FdF");

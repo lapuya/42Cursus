@@ -6,7 +6,7 @@
 /*   By: lapuya-p <lapuya-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 11:28:05 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/09/06 14:18:16 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/09/06 15:18:45 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "minilibx_macos/mlx.h"
+# include <math.h>
 
 typedef struct {
 	int	x;
