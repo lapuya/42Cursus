@@ -6,7 +6,7 @@
 /*   By: lapuya-p <lapuya-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 11:28:05 by lapuya-p          #+#    #+#             */
-/*   Updated: 2021/09/02 14:14:44 by lapuya-p         ###   ########.fr       */
+/*   Updated: 2021/09/06 14:18:16 by lapuya-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ typedef struct {
 	int	height;
 	int	width;
 	int	**matrix;
-	t_coords	a;
-	t_coords	b;
 	int	zoom;
 	int	color;
 }	t_map;
